@@ -1,10 +1,6 @@
-import express from "express";
 import mongoose from "mongoose";
-import cors from "cors";
-const app = express();
+import app from "./app";
 const port = 5000;
-
-app.use(cors());
 
 // database connection
 async function database() {
@@ -18,9 +14,5 @@ async function database() {
     console.log(`Database connection failed`, error);
   }
 }
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
 database();
