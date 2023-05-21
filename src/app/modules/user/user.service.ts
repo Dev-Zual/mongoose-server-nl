@@ -7,6 +7,6 @@ export const createUserToDb = async (userData: IUser): Promise<IUser> => {
   await user.save();
   return user;
 };
-export const getAllUserService = async () => {
-  return await User.find({});
+export const getAllUserService = async (): Promise<IUser[]> => {
+  return await User.find();
 };
