@@ -16,3 +16,11 @@ export interface IUser {
   presentAddress: string;
   permanentAddress: string;
 }
+
+export interface IUserMethods {
+  fullName(): string;
+}
+
+export interface IAdminMethods {
+  getAdmin(): IUser[] | null;
+}

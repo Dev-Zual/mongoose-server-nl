@@ -1,9 +1,23 @@
 import { NextFunction, Request, Response, response } from "express";
 import {
   createUserToDb,
+  getAllAdminUserService,
   getAllUserService,
   getUserByIdService,
 } from "./user.service";
+
+export const createUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const userData = req.body;
+  const user = await createUserToDb(userData);
+  res.status(200).json({
+    message: "successfully created user",
+    data: user,
+  });
+};
 
 export const getAllUser = async (req: Request, res: Response) => {
   const result = await getAllUserService();
@@ -21,15 +35,10 @@ export const getUserById = async (req: Request, res: Response) => {
   });
 };
 
-export const createUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const userData = req.body;
-  const user = await createUserToDb(userData);
+export const getAdminUser = async (req: Request, res: Response) => {
+  const result = await getAllAdminUserService();
   res.status(200).json({
-    message: "successfully created user",
-    data: user,
+    status: "success",
+    data: result,
   });
 };
