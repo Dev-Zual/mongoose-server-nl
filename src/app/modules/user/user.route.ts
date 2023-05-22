@@ -9,8 +9,8 @@ import {
 const router = express.Router();
 
 router.get("/", getAllUser);
+router.get("/get-all-admin", getAdminUser);
 router.get("/:id", getUserById);
-router.post("/get-all-admin", getAdminUser);
 router.post("/create-user", createUser);
 
 export default router;

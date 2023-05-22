@@ -15,4 +15,12 @@ export const getUserByIdService = async (id: string): Promise<IUser | null> => {
   return await User.findOne({ id }, { name: 1 });
 };
 
-export const getAllAdminUserService = async () => {};
+// static methods
+// class --> attached --> method ---> directly call using class
+// user = new User
+// user. --> instance methods
+// User.getAllAdmin()
+export const getAllAdminUserService = async (): Promise<IUser> => {
+  const adminUsers = await User.getAdminUsers();
+  return adminUsers;
+};
